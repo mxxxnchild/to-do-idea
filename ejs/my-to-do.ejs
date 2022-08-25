@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('./partials/head'); %>
+</head>
+
+<body>
+	<%- include('./partials/navbar'); %>
+		<div class="container">
+			<h1>My ToDo</h1>
+
+			<div id="app">
+
+				<form @submit.prevent="createServer">
+					<div class="mb-3">
+						<input type="text" v-model="name" class="form-control">
+					</div>
+
+					<button type="submit" class="btn btn-primary">Добавить</button>
+				</form>
+
+				<div class="spinner-border" role="status" v-if="works.lenght === 0">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+
+				<ul class="list-group" v-else>
+					<li class="list-group-item" v-for="work in works" @click="remove(work.id)">
+						{{work.name}}
+						:
+						<strong>{{work.status}}</strong>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src='/app.js'></script>
+
+</body>
+
+</html>

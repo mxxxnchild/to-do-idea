@@ -20,6 +20,7 @@ new Vue({
 				.then((res) => {
 					this.works.push(res.data)
 				});
+			this.name = ''
 
 		},
 		remove(id) {

@@ -24,8 +24,11 @@
 					<span class="visually-hidden">Loading...</span>
 				</div>
 
-				<ul class="list-group" v-else>
-					<li class="list-group-item" v-for="work in works" @click="remove(work.id)">
+				<ul class="list-group" style="margin-top:20px;" v-else>
+
+					<li class="list-group-item" v-for="work in works">
+						<button class="btn btn-primary" onclick="this.blur()" type=" submit" style="margin-right:20px;"
+							@click="remove(work.id)">Del</button>
 						{{work.name}}
 						:
 						<strong>{{work.status}}</strong>

@@ -11,17 +11,18 @@ new Vue({
 	},
 	methods: {
 		createServer() {
-			const bodyParameters = {
-				name: this.name,
-				status: 'создано'
-			};
+			if (this.name !== '') {
+				const bodyParameters = {
+					name: this.name,
+					status: 'создано'
+				};
 
-			axios.post('/api/works', bodyParameters)
-				.then((res) => {
-					this.works.push(res.data)
-				});
-			this.name = ''
-
+				axios.post('/api/works', bodyParameters)
+					.then((res) => {
+						this.works.push(res.data)
+					});
+				this.name = ''
+			}
 		},
 		remove(id) {
 			axios.delete(`/api/works/${id}`, id)

@@ -16,8 +16,10 @@ export const getAll = (req, res) => {
 
 export const create = (req, res) => {
 	// let keys = Object.keys(req.body);
+	let lastElem = works[works.length - 1]
+	let lastId = Number(lastElem.id)
 	const newWork = {
-		id: String(works.length + 1),
+		id: String(lastId + 1),
 		name: req.body.name,
 		status: req.body.status
 

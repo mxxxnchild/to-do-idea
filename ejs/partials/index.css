@@ -1,0 +1,14 @@
+
+
+
+.btn{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.text{
+	letter-spacing: 10px;
+	font-weight: 800;
+	
+}

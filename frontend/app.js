@@ -6,7 +6,7 @@ new Vue({
 	data() {
 		return {
 			works: [],
-			name: ''
+			name: '',
 		};
 	},
 	methods: {
@@ -23,12 +23,26 @@ new Vue({
 			this.name = ''
 
 		},
+		UpdateWorkName(newName){
+			alert(newName)
+		},
 		remove(id) {
 			axios.delete(`/api/works/${id}`, id)
 				.then((res) => {
 					this.works = this.works.filter(s => s.id !== id)
 				})
-		}
+		},
+		toggleEditMode(id){
+			this.works = this.works.map(el => {
+				if(el.id === id){
+					el.editMode = !el.editMode
+					el.newName = el.name
+					return el
+				}else{
+					return el
+				}
+			})
+		},
 	},
 	mounted() {
 		axios

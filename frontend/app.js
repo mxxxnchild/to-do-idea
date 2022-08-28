@@ -24,8 +24,18 @@ new Vue({
 				this.name = ''
 			}
 		},
-		UpdateWorkName(newName){
-			alert(newName)
+		UpdateWorkName(newName, id) {
+
+			console.log(newName)
+			axios.put(`/api/works/${id}`, { id: id, name: newName })
+				.then((res) => {
+					this.works = this.works.map(elem => {
+						if (id === elem.id) {
+							elem.name = newName
+						}
+						return elem
+					})
+				})
 		},
 		remove(id) {
 			axios.delete(`/api/works/${id}`, id)
@@ -33,13 +43,13 @@ new Vue({
 					this.works = this.works.filter(s => s.id !== id)
 				})
 		},
-		toggleEditMode(id){
+		toggleEditMode(id) {
 			this.works = this.works.map(el => {
-				if(el.id === id){
+				if (el.id === id) {
 					el.editMode = !el.editMode
 					el.newName = el.name
 					return el
-				}else{
+				} else {
 					return el
 				}
 			})

@@ -33,3 +33,13 @@ export const deleteElem = (req, res) => {
 	res.json({ message: 'work has been deleted' })
 	console.log(works)
 }
+export const updateElem = (req, res) => {
+	let newName = req.body.name
+	works.forEach(elem => {
+		if (elem.id === req.params.id) {
+			elem.name = newName
+		}
+	})
+	res.json({ message: 'work has been deleted' })
+	console.log(works)
+}
